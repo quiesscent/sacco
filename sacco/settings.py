@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-0ip+zlq*qf&zt8n3x$9mp-kc-etpyjo6mynvcg6j44e5%h2=ny
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'main',
 ]
 
 MIDDLEWARE = [
@@ -49,12 +50,20 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+AUTHENTICATION_BACKENDS = [
+    'main.backends.EmailOrIDBackend',
+    'django.contrib.auth.backends.ModelBackend',  # Keep the default one as a fallback
+]
+
+
 ROOT_URLCONF = 'sacco.urls'
+
+AUTH_USER_MODEL = 'main.CustomUser'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
