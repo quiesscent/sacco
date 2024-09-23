@@ -12,7 +12,7 @@
         {% csrf_token %}
           <div class="mb-3">
             <label for="formGroupExampleInput" class="form-label">Email or ID No.</label>
-            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="" name="username">
+            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="{{ request.user.is_superuser }}" name="username">
           </div>
           <div class="mb-3">
             <label for="formGroupExampleInput2" class="form-label">Password</label>

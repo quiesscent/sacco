@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import CustomUser
+from .models import CustomUser, MemberDependent, MemberProfile, Notification
 from django.contrib.auth.admin import UserAdmin
 
 # Register your models here.
@@ -14,3 +14,6 @@ class CustomUserAdmin(UserAdmin):
         ),
     )
 admin.site.register(CustomUser, CustomUserAdmin)
+admin.site.register(MemberDependent)
+admin.site.register(MemberProfile)
+admin.site.register(Notification)

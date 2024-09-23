@@ -12,14 +12,44 @@ class CustomUser(AbstractUser):
     def __str__(self):
         return self.email
 
-class UserProfile(models.Model):
-    '''Model definition for UserProfile.'''
+class MemberDependent(models.Model):
+    '''Model definition for MemberProfile.'''
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, default=1)
-    class Meta:
-        '''Meta definition for UserProfile.'''
+    name = models.CharField(default='', max_length=100)
+    relationship = models.CharField(default='', max_length=100)
+    proof = models.ImageField(upload_to='dependents/', default='')
+    verified = models.BooleanField(default=False)
 
-        verbose_name = 'UserProfile'
-        verbose_name_plural = 'UserProfiles'
+    class Meta:
+        '''Meta definition for Member Dependent.'''
+
+        verbose_name = 'Member Dependent'
+        verbose_name_plural = ' Member  Dependents'
 
     def __str__(self):
-        return f'{self.user} Profile information'
+        return f'{self.user }, {self.relationship } Information'
+
+class MemberProfile(models.Model):
+    '''Model definition for MemberProfile.'''
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, default=1)
+    mobile_no = models.IntegerField(default=0)
+    residence = models.CharField(default='', max_length=50)
+    profile = models.ImageField(upload_to='profiles/', default='')
+
+    class Meta:
+        '''Meta definition for MemberProfile.'''
+
+        verbose_name = 'Member Profile'
+        verbose_name_plural = 'Member Profiles'
+
+    def __str__(self):
+        return f'{self.user} Profile'
+
+class Notification(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    is_read = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"{self.user.username} you have a message"

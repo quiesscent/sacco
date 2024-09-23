@@ -3,6 +3,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 from .models import CustomUser
 from .modules import generate_unique_membership_number
+from .crud import deleteMember
 
 def index(request):
 	return render(request, 'index.html')
@@ -47,3 +48,7 @@ def register_(request):
             return redirect('home')
 
     return render(request, 'register.html')
+
+def crud(request):
+    if request.method == 'POST':
+        pass
