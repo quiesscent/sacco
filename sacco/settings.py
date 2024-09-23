@@ -139,6 +139,3 @@ MEDIA_ROOT = BASE_DIR / 'media'  # Directory where uploaded files are stored
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-TWILIO_AUTH_TOKEN = os.getenv('auth_token')
-TWILIO_ACCOUNT_SID = os.getenv('account_sid')

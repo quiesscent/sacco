@@ -1,7 +1,6 @@
 import string
 import random
 from .models import CustomUser
-import os
 from django.conf import settings
 
 # Create your views here.
