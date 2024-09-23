@@ -1,10 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
-from .models import CustomUser
+from .models import CustomUser, MemberProfile, MemberDependent
 from .modules import generate_unique_membership_number
-from .crud import deleteMember
-
+from .forms import MemberProfileForm
 def index(request):
 	return render(request, 'index.html')
 
@@ -49,6 +48,35 @@ def register_(request):
 
     return render(request, 'register.html')
 
-def crud(request):
+
+def update_profile(request):
+
+    user_profile = MemberProfile.objects.get(id=request.user.id)
     if request.method == 'POST':
-        pass
+        form = MemberProfileForm(request.POST, request.FILES, instance=user_profile)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Profile Updated Successfully')
+            return redirect('update')  # Redirect to same profile page
+
+    else:
+        form = MemberProfileForm(instance=user_profile)
+        dependents = MemberDependent.objects.filter(user=user_profile.user)
+        print(dependents)
+        context = {
+                'dependents': dependents,
+                'form': form
+            }
+    return render(request, 'update.html', context)
+
+def add_dependant(request):
+    user = get_object_or_404(CustomUser, id=request.user.id)
+    if request.method == 'POST' and request.FILES.get('proof_file'):
+        name = request.POST['name']
+        relationship = request.POST['relationship']
+        proof_file = request.FILES['proof_file']
+        print(user, name, relationship, proof_file)
+        dependent = MemberDependent(user=user, name=name, relationship=relationship, proof=proof_file)
+        dependent.save()
+        messages.success(request, 'Dependent Added Successfully')
+        return redirect('update')
