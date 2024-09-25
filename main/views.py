@@ -34,6 +34,7 @@ def register_(request):
         if password2 != password1:
             # messages.error(request, 'Passwords do not match')
             print('Passwords do not match')
+            messages.error('Passwords do not match')
         else:
             user = CustomUser.objects.create_user(
                             username=username,
@@ -62,7 +63,6 @@ def update_profile(request):
     else:
         form = MemberProfileForm(instance=user_profile)
         dependents = MemberDependent.objects.filter(user=user_profile.user)
-        print(dependents)
         context = {
                 'dependents': dependents,
                 'form': form
@@ -75,7 +75,6 @@ def add_dependant(request):
         name = request.POST['name']
         relationship = request.POST['relationship']
         proof_file = request.FILES['proof_file']
-        print(user, name, relationship, proof_file)
         dependent = MemberDependent(user=user, name=name, relationship=relationship, proof=proof_file)
         dependent.save()
         messages.success(request, 'Dependent Added Successfully')
