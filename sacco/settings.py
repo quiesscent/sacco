@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main',
+    'accounts'
 ]
 
 MIDDLEWARE = [
@@ -54,14 +55,14 @@ MIDDLEWARE = [
 ]
 
 AUTHENTICATION_BACKENDS = [
-    'main.backends.EmailOrIDBackend',
+    'accounts.backends.EmailOrIDBackend',
     'django.contrib.auth.backends.ModelBackend',  # Keep the default one as a fallback
 ]
 
 
 ROOT_URLCONF = 'sacco.urls'
 
-AUTH_USER_MODEL = 'main.CustomUser'
+AUTH_USER_MODEL = 'accounts.CustomUser'
 
 TEMPLATES = [
     {
@@ -74,7 +75,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'main.context_processors.profile_image',
+                'accounts.context_processors.profile_image',
             ],
         },
     },
