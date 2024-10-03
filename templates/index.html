@@ -1,0 +1,348 @@
+{% extends "main.html" %}
+{% load static %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <section id="hero" class="hero section">
+        <div class="container">
+          <div class="row gy-4">
+            <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
+              <h1>Welcome to Mab-Uwiano Welfare Group</h1>
+              <p>Dedicated to helping our members always and whenever</p>
+              <div class="d-flex">
+                <a href="#about" class="btn-get-started">Join Us</a>
+                {% comment %} <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox btn-watch-video d-flex align-items-center"></a> {% endcomment %}
+              </div>
+            </div>
+            <div class="col-lg-6 order-1 order-lg-2 hero-img" align='right'>
+              <img src="{% static 'assets/img/logo.jpg' %}" class="img-fluid animated animate__animated animate__heartBeat" alt="">
+            </div>
+          </div>
+        </div>
+      </section><!-- /Hero Section -->
+
+      <!-- About Section -->
+    <section id="about" class="about section">
+
+      <!-- Section Title -->
+      <div class="container section-title">
+        <h2>About Us</h2>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row gy-5">
+
+          <div class="content col-xl-5 d-flex flex-column">
+            <h3>MAB UWIANO WELFARE GROUP</h3>
+            <p>
+              The welfare is established as a non-political, non-sectarian, voluntary self-help group of members for the furtherance of the objectives appearing herein.
+            </p>
+            <a href="#" class="about-btn align-self-center align-self-xl-start"><span>About us</span> <i class="bi bi-chevron-right"></i></a>
+          </div>
+
+          <div class="col-xl-7">
+            <div class="row gy-4">
+
+              <div class="col-md-6 icon-box position-relative">
+                <i class="bi bi-briefcase"></i>
+                <h4><a href="" class="stretched-link">Support</a></h4>
+                <p>To be a forum where members would give each other financial, social,
+                  emotional, mental and spiritual support whenever necessary.</p>
+              </div><!-- Icon-Box -->
+
+              <div class="col-md-6 icon-box position-relative">
+                <i class="bi bi-gem"></i>
+                <h4><a href="" class="stretched-link">Unity</a></h4>
+                <p>To mobilize the members to contribute monthly shares for lending a helping
+                  hand to any member who is afflicted with compassionate or medical
+                  emergency.</p>
+              </div><!-- Icon-Box -->
+
+              <div class="col-md-6 icon-box position-relative">
+                <i class="bi bi-broadcast"></i>
+                <h4><a href="" class="stretched-link">Outsource</a></h4>
+                <p>To acquire property and chattels and do such other things as may be approved
+                  by members.</p>
+              </div><!-- Icon-Box -->
+
+              <div class="col-md-6 icon-box position-relative">
+                <i class="bi bi-easel"></i>
+                <h4><a href="" class="stretched-link">Connnect</a></h4>
+                <p>To promote social bonding between and among members.</p>
+              </div><!-- Icon-Box -->
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /About Section -->
+
+        <!-- Stats Section -->
+        <section id="stats" class="stats section">
+
+          <div class="container">
+
+            <div class="row gy-4 align-items-center">
+
+              <div class="col-lg-5">
+                <img src="{% static 'assets/img/stats-img.svg' %}" alt="" class="img-fluid">
+              </div>
+
+              <div class="col-lg-7">
+
+                <div class="row gy-4">
+
+                  <div class="col-lg-6">
+                    <div class="stats-item d-flex">
+                      <i class="bi bi-emoji-smile flex-shrink-0"></i>
+                      <div>
+                        <span data-purecounter-start="0" data-purecounter-end="200" data-purecounter-duration="1" class="purecounter"></span>
+                        <p><strong>Benefited Members</strong> <span></span></p>
+                      </div>
+                    </div>
+                  </div><!-- End Stats Item -->
+
+                  <div class="col-lg-6">
+                    <div class="stats-item d-flex">
+                      <i class="bi bi-journal-richtext flex-shrink-0"></i>
+                      <div>
+                        <span data-purecounter-start="0" data-purecounter-end="50" data-purecounter-duration="1" class="purecounter"></span>
+                        <p><strong>Group Projects</strong> <span></span></p>
+                      </div>
+                    </div>
+                  </div><!-- End Stats Item -->
+
+                  <div class="col-lg-6">
+                    <div class="stats-item d-flex">
+                      <i class="bi bi-headset flex-shrink-0"></i>
+                      <div>
+                        <span data-purecounter-start="0" data-purecounter-end="100" data-purecounter-duration="1" class="purecounter"></span>
+                        <p><strong>Projects Partcipated</strong> <span></span></p>
+                      </div>
+                    </div>
+                  </div><!-- End Stats Item -->
+
+                  <div class="col-lg-6">
+                    <div class="stats-item d-flex">
+                      <i class="bi bi-people flex-shrink-0"></i>
+                      <div>
+                        <span data-purecounter-start="0" data-purecounter-end="150" data-purecounter-duration="1"class="purecounter"></span>
+                        <p><strong>Number of Members</strong> <span></span></p>
+                      </div>
+                    </div>
+                  </div><!-- End Stats Item -->
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </section><!-- /Stats Section -->
+
+            <!-- Services Section -->
+    <section id="services" class="services section">
+
+      <!-- Section Title -->
+      <div class="container section-title" >
+        <h2>Group Objectives and Goals</h2>
+        <p>What we do as a welfare group</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-xl-3 col-md-6 d-flex">
+            <div class="service-item position-relative">
+              <i class="bi bi-graph-up-arrow"></i>
+              <h4><a href="" class="stretched-link">Growth</a></h4>
+              <p>We uplift the economic status of our members from where they are</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex" >
+            <div class="service-item position-relative">
+              <i class="bi bi-broadcast"></i>
+              <h4><a href="" class="stretched-link">Connectivity</a></h4>
+              <p>Promoting social bonding between and among our members hence promoting unity</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex">
+            <div class="service-item position-relative">
+              <i class="bi bi-cash-stack"></i>
+              <h4><a href="" class="stretched-link">Saving Schemes</a></h4>
+              <p>To develop a saving and investment culture among the members allowing personal support</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex">
+            <div class="service-item position-relative">
+              <i class="bi bi-person-hearts"></i>
+              <h4><a href="" class="stretched-link">Support</a></h4>
+              <p>A forum allowing members to offer each other financial, social, emotional, mental and spiritual support when neccessary</p>
+            </div>
+          </div><!-- End Service Item -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Services Section -->
+
+    <!-- Team Section -->
+    <section id="team" class="team section">
+      <!-- Section Title -->
+      <div class="container section-title" >
+        <h2>Team</h2>
+        <p>Meet our Officials</p>
+      </div><!-- End Section Title -->
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="team-member">
+              <div class="member-img">
+                <img src="{% static 'assets/img/team/team.png' %}" class="img-fluid" alt="">
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter-x"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>Official 1</h4>
+                <span>Chairman</span>
+              </div>
+            </div>
+          </div><!-- End Team Member -->
+
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="team-member">
+              <div class="member-img">
+                <img src="{% static 'assets/img/team/team.png' %}" class="img-fluid" alt="">
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter-x"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>Official 2</h4>
+                <span>Ass Chairman</span>
+              </div>
+            </div>
+          </div><!-- End Team Member -->
+
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="team-member">
+              <div class="member-img">
+                <img src="{% static 'assets/img/team/team.png' %}" class="img-fluid" alt="">
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter-x"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>Official 3</h4>
+                <span>Secretary</span>
+              </div>
+            </div>
+          </div><!-- End Team Member -->
+
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="team-member">
+              <div class="member-img">
+                <img src="{% static 'assets/img/team/team.png' %}" class="img-fluid" alt="">
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter-x"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>Official 4</h4>
+                <span>Treasurer</span>
+              </div>
+            </div>
+          </div><!-- End Team Member -->
+        </div>
+      </div>
+    </section><!-- /Team Section -->
+        <!-- Contact Section -->
+        <section id="contact" class="contact section">
+          <!-- Section Title -->
+          <div class="container section-title">
+            <h2>Contact</h2>
+            <p>NFor more information reach out to us through</p>
+          </div><!-- End Section Title -->
+          <div class="container position-relative">
+            <div class="row gy-4">
+              <div class="col-lg-5">
+                <div class="info-item d-flex">
+                  <i class="bi bi-geo-alt flex-shrink-0"></i>
+                  <div>
+                    <h3>Address</h3>
+                    <p>Nairobi, All Over</p>
+                  </div>
+                </div><!-- End Info Item -->
+
+                <div class="info-item d-flex">
+                  <i class="bi bi-telephone flex-shrink-0"></i>
+                  <div>
+                    <h3>Call Us</h3>
+                    <p>+254000000000/ +254700000000</p>
+                  </div>
+                </div><!-- End Info Item -->
+
+                <div class="info-item d-flex">
+                  <i class="bi bi-envelope flex-shrink-0"></i>
+                  <div>
+                    <h3>Email Us</h3>
+                    <p>info@mabuwianowelfare.com</p>
+                  </div>
+                </div><!-- End Info Item -->
+
+              </div>
+              <div class="col-lg-7">
+                <form action="" method="post" class="php-email-form">
+                  <div class="row gy-4">
+
+                    <div class="col-md-6">
+                      <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
+                    </div>
+
+                    <div class="col-md-6 ">
+                      <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
+                    </div>
+
+                    <div class="col-md-12">
+                      <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
+                    </div>
+
+                    <div class="col-md-12">
+                      <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
+                    </div>
+
+                    <div class="col-md-12 text-center">
+                      <div class="loading">Loading</div>
+                      <div class="error-message"></div>
+                      <div class="sent-message">Your message has been sent. Thank you!</div>
+
+                      <button type="submit">Send Message</button>
+                    </div>
+
+                  </div>
+                </form>
+              </div><!-- End Contact Form -->
+            </div>
+          </div>
+        </section><!-- /Contact Section -->
+{% endblock content %}
