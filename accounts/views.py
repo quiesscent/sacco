@@ -1,3 +1,4 @@
+from django.http.response import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
@@ -17,12 +18,11 @@ def login_(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('home')  # Redirect to the home page or other
+            return redirect('dashboard')  # Redirect to the home page or other
         else:
             # Invalid login error
-            return render(request, 'login.html', {'error': 'Invalid credentials'})
-
-    return render(request, 'login.html')
+            return JsonResponse({'error': 'Invalid credentials'})
+            # return render(request, 'login.html', {'error': 'Invalid credentials'})
 
 def register_(request):
     if request.method == 'POST':
@@ -36,7 +36,7 @@ def register_(request):
         if password2 != password1:
             # messages.error(request, 'Passwords do not match')
             print('Passwords do not match')
-            messages.error('Passwords do not match')
+            messages.error(request, 'Passwords do not match')
         else:
             user = CustomUser.objects.create_user(
                             username=username,
@@ -47,7 +47,7 @@ def register_(request):
                         )
             user.save()
             messages.success(request, 'Member Registration Success !! Login for Member Activation')
-            return redirect('home')
+            return redirect('register')
 
     return render(request, 'register.html')
 
@@ -81,3 +81,9 @@ def add_dependant(request):
         dependent.save()
         messages.success(request, 'Dependent Added Successfully')
         return redirect('update')
+
+
+def logout_(request):
+
+    logout(request)
+    return redirect('home')
