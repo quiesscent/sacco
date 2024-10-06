@@ -1,0 +1,218 @@
+{% extends "main.html" %}
+{% load static %}
+
+{% block content %}
+<div class="centered">
+
+
+<div class="containerLog">
+    <div class="form-box">
+        <div class="info-text" id="info-text">
+            <h2 id="info-heading">WELCOME BACK!</h2>
+            <p>Login to access your account and continue.</p>
+        </div>
+    
+        <div class="form-wrapper" id="form-wrapper">
+            <!-- Sign Up Form -->
+            <form class="form sign-up" id="signup-form" style="display: none;" action="{% url 'register' %}">
+                <h2>Sign Up</h2>
+                <input type="text" placeholder="Full name" />
+                <input type="email" placeholder="Email" />
+                <input type="number" placeholder="Id No" />
+                <input type="password" placeholder="Password" />
+                <input type="password" placeholder="Confirm Password" /><br>
+                <button type="submit">Sign Up</button>
+                <p>Already have an account? <a href="#" id="switch-to-login">Login</a></p>
+            </form>
+    
+            <!-- Login Form -->
+          <form class="form login" id="login-form" action="{% url 'login'  %}">
+                <h2>Login</h2>
+                <input type="text" placeholder="Email / IdNo" >
+                <input type="password" placeholder="Password" /><br>
+                <button type="submit">Login</button>
+                <p>Don't have an account? <a href="#" id="switch-to-signup">Sign Up</a></p>
+            </form>
+        </div>
+    </div>
+</div>
+
+</div>
+
+<style>
+:root {
+    --primary-black: #272363;
+    --white: #fff;
+    --transition-duration: 0.7s;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+}
+
+.centered{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+.containerLog {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--white);
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 80%;
+  max-width: 700px; 
+  min-height: 50vh;
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+}
+
+.form-box {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.info-text {
+  background-color: var(--primary-black);
+  color: var(--white);
+  width: 50%;
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all var(--transition-duration);
+}
+
+.info-text h2 {
+  font-size: 2em;
+  margin-bottom: 10px;
+  text-align: center;
+  color: #fff;
+  font-weight: 700;
+}
+
+.info-text p {
+  font-size: 0.9em;
+  text-align: center;
+}
+
+.form-wrapper {
+  background-color: var(--white);
+  width: 50%;
+  padding: 60px 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all var(--transition-duration);
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.form input {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.form button {
+  padding: 10px;
+  background-color: var(--primary-black);
+  color: var(--white);
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.form p {
+  margin-top: 20px;
+}
+
+.form a {
+  color: var(--primary-black);
+  text-decoration: none;
+}
+
+.swap-forms {
+  flex-direction: row-reverse;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .info-text {
+    display: none;
+  }
+  .containerLog {
+    flex-direction: column;
+    width: 90%;
+    max-width: none;
+  }
+  
+  .info-text {
+    width: 100%;
+    padding: 40px;
+  }
+
+  .form-wrapper {
+    width: 100%;
+    padding: 40px;
+  }
+}
+
+</style>  
+
+<script>
+const switchToLogin = document.getElementById('switch-to-login');
+const switchToSignup = document.getElementById('switch-to-signup');
+const formBox = document.querySelector('.form-box');
+const signupForm = document.getElementById('signup-form');
+const loginForm = document.getElementById('login-form');
+const infoHeading = document.getElementById('info-heading');
+const infoParagraph = document.querySelector('.info-text p');
+
+// Function to switch to the login form
+switchToLogin.addEventListener('click', function (e) {
+  e.preventDefault();
+  signupForm.style.display = 'none';
+  loginForm.style.display = 'block';
+  formBox.classList.remove('swap-forms');
+
+  // Update the heading and paragraph text for login
+  infoHeading.textContent = 'WELCOME BACK!';
+  infoParagraph.textContent = 'Login to access your account and continue.';
+});
+
+// Function to switch to the sign-up form
+switchToSignup.addEventListener('click', function (e) {
+  e.preventDefault();
+  loginForm.style.display = 'none';
+  signupForm.style.display = 'block';
+  formBox.classList.add('swap-forms');
+
+  // Update the heading and paragraph text for sign-up
+  infoHeading.textContent = 'CREATE ACCOUNT!';
+  infoParagraph.textContent = 'Sign up to create a new account and get started.';
+});
+</script>
+{% endblock content %}
