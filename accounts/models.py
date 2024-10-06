@@ -28,7 +28,7 @@ class MemberDependent(models.Model):
         verbose_name_plural = ' Member  Dependents'
 
     def __str__(self):
-        return f'{self.user }, {self.relationship } Information'
+        return f'{self.user.username }, {self.relationship } Information'
 
 class MemberProfile(models.Model):
     '''Model definition for MemberProfile.'''
