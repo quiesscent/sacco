@@ -428,6 +428,18 @@ h6 {
   }
 }
 
+.sitename {
+  font-size: 36px; /* Adjust font size as needed */
+  color: #333; /* Optional: Font color */
+}
+
+/* Hide font size on smaller screens */
+@media (max-width: 768px) {
+  .sitename {
+      display: none; /* Completely hides the element */
+  }
+}
+
 /*--------------------------------------------------------------
 # Global Footer
 --------------------------------------------------------------*/
