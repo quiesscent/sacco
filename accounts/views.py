@@ -19,6 +19,7 @@ def index(request):
                 'expenditure': contributions.expenditure,
                 'savings': contributions.savings,
         }
+
         return JsonResponse(data)
 
         context = {
