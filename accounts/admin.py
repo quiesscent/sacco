@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import CustomUser, MemberDependent, MemberProfile, Notification, Contributions
+from .models import CustomUser, MemberDependent, MemberProfile, Notification, Contributions, OverallContribution
 from django.contrib.auth.admin import UserAdmin
 
 # Register your models here.
@@ -18,3 +18,4 @@ admin.site.register(MemberDependent)
 admin.site.register(MemberProfile)
 admin.site.register(Notification)
 admin.site.register(Contributions)
+admin.site.register(OverallContribution)

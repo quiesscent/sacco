@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
+
 # Create your models here.
 class CustomUser(AbstractUser):
     email = models.EmailField(unique=True)
@@ -9,6 +10,9 @@ class CustomUser(AbstractUser):
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username', 'id_number', 'member_no']
+
+    class Meta:
+        verbose_name_plural ='Members'
 
     def __str__(self):
         return self.email
@@ -59,6 +63,7 @@ class Contributions(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     funeral_kitty = models.IntegerField()
     monthly_contributions = models.IntegerField()
+    savings = models.IntegerField(default=0)
 
     class Meta:
         verbose_name_plural = 'Contributions'
@@ -71,14 +76,20 @@ class Contributions(models.Model):
 class OverallContribution(models.Model):
     funeral_kitty = models.IntegerField()
     monthly_contributions = models.IntegerField()
-    # expenditure = models.IntergerField()
+    expenditure = models.IntegerField()
+    savings =  models.IntegerField()
 
 
     def update_contribution(self):
         contributions = Contributions.objects.all()
         total_kitty = sum(contribution.funeral_kitty for contribution in contributions)
         total_monthly_contributions = sum(contribution.monthly_contributions for contribution in contributions)
+        total_savings = sum(contribution.savings for contribution in contributions)
 
         self.total_contributions = total_kitty
         self.monthly_contributions = total_monthly_contributions
+        self.savings = total_savings
         self.save()
+
+    def __str__(self):
+        return f'Contribution Statistics'

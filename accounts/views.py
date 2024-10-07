@@ -2,16 +2,24 @@ from django.http.response import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
-from .models import CustomUser, MemberProfile, MemberDependent, Contributions
+from .models import CustomUser, MemberProfile, MemberDependent, Contributions, OverallContribution
 from .modules import generate_unique_membership_number
 from .forms import MemberProfileForm
 
 # Create your views here.
 def index(request):
-
+    labels, data  = [], []
     user_profile = CustomUser.objects.get(id=request.user.id)
     if request.user.is_superuser:
         members = CustomUser.objects.all()
+        contributions = OverallContribution.objects.latest('id')
+        data = {
+                'funeral_kitty': contributions.funeral_kitty,
+                'monthly_contributions':contributions.monthly_contributions,
+                'expenditure': contributions.expenditure,
+                'savings': contributions.savings,
+        }
+        return JsonResponse(data)
 
         context = {
             "members": members
