@@ -5,29 +5,35 @@ from django.contrib import messages
 from .models import CustomUser, MemberProfile, MemberDependent, Contributions, OverallContribution
 from .modules import generate_unique_membership_number
 from .forms import MemberProfileForm
+from django.contrib.auth.decorators import user_passes_test
 
 # Create your views here.
+
+def admin_check(user):
+    return user.is_superuser
+
+@user_passes_test(admin_check)
+def chart_data(request):
+    contributions = OverallContribution.objects.latest('id')
+    data = {
+            'funeral_kitty': contributions.funeral_kitty,
+            'monthly_contributions':contributions.monthly_contributions,
+            'expenditure': contributions.expenditure,
+            'savings': contributions.savings,
+    }
+    return JsonResponse(data)
+
 def index(request):
     labels, data  = [], []
     user_profile = CustomUser.objects.get(id=request.user.id)
     if request.user.is_superuser:
         members = CustomUser.objects.all()
-        contributions = OverallContribution.objects.latest('id')
-        data = {
-                'funeral_kitty': contributions.funeral_kitty,
-                'monthly_contributions':contributions.monthly_contributions,
-                'expenditure': contributions.expenditure,
-                'savings': contributions.savings,
-        }
-        return JsonResponse(data)
-
         context = {
             "members": members
         }
     else:
         contributions = get_object_or_404(Contributions, user=request.user.username)
         dependents = MemberDependent.objects.filter(user=user_profile.user)
-
         context = {
             'contributions': contributions,
             'dependents': dependents,
