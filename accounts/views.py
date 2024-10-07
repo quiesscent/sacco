@@ -2,13 +2,29 @@ from django.http.response import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
-from .models import CustomUser, MemberProfile, MemberDependent
+from .models import CustomUser, MemberProfile, MemberDependent, Contributions
 from .modules import generate_unique_membership_number
 from .forms import MemberProfileForm
 
 # Create your views here.
 def index(request):
-    return render(request, 'home.html')
+
+    user_profile = CustomUser.objects.get(id=request.user.id)
+    if request.user.is_superuser:
+        members = CustomUser.objects.all()
+
+        context = {
+            "members": members
+        }
+    else:
+        contributions = get_object_or_404(Contributions, user=request.user.username)
+        dependents = MemberDependent.objects.filter(user=user_profile.user)
+
+        context = {
+            'contributions': contributions,
+            'dependents': dependents,
+        }
+    return render(request, 'home.html', context)
 
 def login_(request):
     if request.method == 'POST':

@@ -54,3 +54,31 @@ class Notification(models.Model):
 
     def __str__(self):
         return f"{self.user.username} you have a message"
+
+class Contributions(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    funeral_kitty = models.IntegerField()
+    monthly_contributions = models.IntegerField()
+
+    class Meta:
+        verbose_name_plural = 'Contributions'
+
+    def __str__(self):
+        return f'{self.user.username} contributions over time'
+
+
+
+class OverallContribution(models.Model):
+    funeral_kitty = models.IntegerField()
+    monthly_contributions = models.IntegerField()
+    # expenditure = models.IntergerField()
+
+
+    def update_contribution(self):
+        contributions = Contributions.objects.all()
+        total_kitty = sum(contribution.funeral_kitty for contribution in contributions)
+        total_monthly_contributions = sum(contribution.monthly_contributions for contribution in contributions)
+
+        self.total_contributions = total_kitty
+        self.monthly_contributions = total_monthly_contributions
+        self.save()

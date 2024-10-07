@@ -1,1 +1,6 @@
 <h1>I thiink in works {{request.user.member_no}}</h1>
+{% for member in members %}
+<ul>
+    <li>{{ member.username }}</li>
+</ul>
+{% endfor %}
