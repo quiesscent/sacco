@@ -4,14 +4,13 @@
     <li>{{ member.username }}</li>
 </ul>
 {% endfor %}
-
 <script>
     function getdata() {
         fetch("{% url 'chart_data' %}")
-            .then((response) => response.json()) // Parse JSON
+            .then((response) => response.json()) // Parse the response as JSON
             .then((data) => {
-                console.log(data);
-            });
-              .catch(error => console.error('Error fetching data:', error));
+                console.log(data); // Print the data to the console
+            })
+            .catch((error) => console.error("Error fetching data:", error)); // Handle any errors
     }
 </script>
