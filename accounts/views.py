@@ -45,7 +45,7 @@ def index(request):
             'contributions': contributions,
         }
 
-    return render(request, 'home.html', context)
+    return render(request, 'dashboard.html', context)
 
 def login_(request):
     if request.method == 'POST':
