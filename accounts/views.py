@@ -8,11 +8,6 @@ from .forms import MemberProfileForm
 from django.contrib.auth.decorators import user_passes_test
 
 # Create your views here.
-
-def admin_check(user):
-    return user.is_superuser
-
-@user_passes_test(admin_check)
 def chart_data(request):
     contributions = OverallContribution.objects.latest('id')
     data = {
@@ -26,11 +21,19 @@ def chart_data(request):
 def index(request):
     labels, data  = [], []
     user_profile = CustomUser.objects.get(id=request.user.id)
+    chart = []
     if request.user.is_superuser:
         members = CustomUser.objects.all()
+        contributions = OverallContribution.objects.latest('id')
+
         context = {
-            "members": members
+            "members": members,
+            'funeral_kitty': contributions.funeral_kitty,
+            'monthly_contributions':contributions.monthly_contributions,
+            'expenditure': contributions.expenditure,
+            'savings': contributions.savings,
         }
+        chart = chart_data(request)
     else:
         contributions = get_object_or_404(Contributions, user=request.user.username)
         dependents = MemberDependent.objects.filter(user=user_profile.user)
@@ -74,7 +77,7 @@ def register_(request):
                             email=email,
                             password=password2,
                             membership_no=membership_no,
-                        )
+                )
             user.save()
             messages.success(request, 'Member Registration Success !! Login for Member Activation')
             return redirect('register')
