@@ -1,9 +1,10 @@
-<h1>I thiink in works {{request.user.member_no}}</h1>
-{% for member in members %}
-<ul>
-    <li>{{ member.username }}</li>
-</ul>
-{% endfor %}
+<h1>I thiink in works {{request.user.username}}</h1>
+<h1>{{ hello }}</h1>
+{% if dependents %} You have some dependants {% else %} you have no dependants
+{% endif %} <br />
+{% if contributions %} You have some contributions {% else %} you have no
+contributions {% endif %}
+
 <script>
     function getdata() {
         fetch("{% url 'chart_data' %}")
