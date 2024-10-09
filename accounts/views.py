@@ -8,7 +8,6 @@ from .forms import MemberProfileForm
 from django.contrib.auth.decorators import user_passes_test
 
 
-
 def admin_check(user):
     return user.is_superuser
 
@@ -122,6 +121,5 @@ def add_dependant(request):
 
 
 def logout_(request):
-
     logout(request)
     return redirect('home')
