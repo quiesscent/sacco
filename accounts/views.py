@@ -7,6 +7,10 @@ from .modules import generate_unique_membership_number
 from .forms import MemberProfileForm
 from django.contrib.auth.decorators import user_passes_test
 
+
+def admin_check(user):
+    return user.is_superuser
+
 # Create your views here.
 def chart_data(request):
     contributions = OverallContribution.objects.latest('id')
@@ -19,9 +23,6 @@ def chart_data(request):
     return JsonResponse(data)
 
 def index(request):
-    labels, data  = [], []
-    user_profile = CustomUser.objects.get(id=request.user.id)
-    chart = []
     if request.user.is_superuser:
         members = CustomUser.objects.all()
         contributions = OverallContribution.objects.latest('id')
@@ -34,13 +35,17 @@ def index(request):
             'savings': contributions.savings,
         }
         chart = chart_data(request)
+
     else:
-        contributions = get_object_or_404(Contributions, user=request.user.username)
-        dependents = MemberDependent.objects.filter(user=user_profile.user)
+        user = request.user.id
+        contributions = Contributions.objects.filter(user=user)
+        dependants = MemberDependent.objects.filter(user=user)
+
         context = {
+            'dependents': dependants,
             'contributions': contributions,
-            'dependents': dependents,
         }
+
     return render(request, 'home.html', context)
 
 def login_(request):
@@ -76,7 +81,7 @@ def register_(request):
                             id_number=idNo,
                             email=email,
                             password=password2,
-                            membership_no=membership_no,
+                            member_no=membership_no,
                 )
             user.save()
             messages.success(request, 'Member Registration Success !! Login for Member Activation')
@@ -84,10 +89,9 @@ def register_(request):
 
     return render(request, 'register.html')
 
-
+# @user_passes_test(admin_check)
 def update_profile(request):
-
-    user_profile = MemberProfile.objects.get(id=request.user.id)
+    user_profile = CustomUser.objects.get(id=request.user.id)
     if request.method == 'POST':
         form = MemberProfileForm(request.POST, request.FILES, instance=user_profile)
         if form.is_valid():
@@ -102,7 +106,7 @@ def update_profile(request):
                 'dependents': dependents,
                 'form': form
             }
-    return render(request, 'update.html', context)
+    return render(request, 'update.html')
 
 def add_dependant(request):
     user = get_object_or_404(CustomUser, id=request.user.id)
@@ -117,6 +121,5 @@ def add_dependant(request):
 
 
 def logout_(request):
-
     logout(request)
     return redirect('home')
