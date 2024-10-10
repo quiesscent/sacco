@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 from .models import CustomUser, MemberProfile, MemberDependent, Contributions, OverallContribution
-from .modules import generate_unique_membership_number
+from .modules import generate_unique_membership_number, verify_dependant
 from .forms import MemberProfileForm
 from django.contrib.auth.decorators import user_passes_test
 
@@ -35,7 +35,6 @@ def index(request):
             'savings': contributions.savings,
         }
         chart = chart_data(request)
-
     else:
         user = request.user.id
         contributions = Contributions.objects.filter(user=user)
@@ -46,7 +45,7 @@ def index(request):
             'contributions': contributions,
         }
 
-    return render(request, 'home.html', context)
+    return render(request, 'dashboard.html', context)
 
 def login_(request):
     if request.method == 'POST':
@@ -89,7 +88,14 @@ def register_(request):
 
     return render(request, 'register.html')
 
-# @user_passes_test(admin_check)
+@user_passes_test(admin_check)
+def admin_crud(request):
+    if request.method == 'POST':
+        dpID = request.POST['id']
+        verify_dependant(dpID)
+        messages.success(request, 'Member Dependant Verified')
+        return redirect('dashboard')
+
 def update_profile(request):
     user_profile = CustomUser.objects.get(id=request.user.id)
     if request.method == 'POST':
@@ -118,6 +124,24 @@ def add_dependant(request):
         dependent.save()
         messages.success(request, 'Dependent Added Successfully')
         return redirect('update')
+
+@user_passes_test(admin_check)
+def member_view(request, name):
+
+    name = name.replace('-', ' ')
+    username = get_object_or_404(CustomUser, username__iexact=name)
+    member = CustomUser.objects.filter(username=username)
+    dependants = MemberDependent.objects.filter(user=username)
+    contributions = Contributions.objects.filter(user=username)
+
+    context = {
+        'member': username,
+        'dependants': dependants,
+        'contributions': contributions
+    }
+
+    return render(request, 'member_details.html', context)
+
 
 
 def logout_(request):
