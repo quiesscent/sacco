@@ -36,23 +36,6 @@
             href="{% static 'vendor/boxicons/css/boxicons.min.css' %}"
             rel="stylesheet"
         />
-        <link
-            href="{% static 'vendor/quill/quill.snow.css' %}"
-            rel="stylesheet"
-        />
-        <link
-            href="{% static 'vendor/quill/quill.bubble.css' %}"
-            rel="stylesheet"
-        />
-        <link
-            href="{% static 'vendor/remixicon/remixicon.css' %}"
-            rel="stylesheet"
-        />
-        <link
-            href="{% static 'vendor/simple-datatables/style.css' %}"
-            rel="stylesheet"
-        />
-
         <!-- Template Main CSS File -->
         <link href="{% static 'css/style.css' %}" rel="stylesheet" />
     </head>
@@ -61,7 +44,7 @@
         <!-- ======= Header ======= -->
         <header id="header" class="header fixed-top d-flex align-items-center">
             <div class="d-flex align-items-center justify-content-between">
-                <a href="index.html" class="logo d-flex align-items-center">
+                <a href="index" class="logo d-flex align-items-center">
                     <img src="{% static 'assets/img/logorm.png' %}" alt="" />
                     <span class="d-none d-lg-block">Mab Uwiano</span>
                 </a>
@@ -309,7 +292,7 @@
                             <li>
                                 <a
                                     class="dropdown-item d-flex align-items-center"
-                                    href="users-profile.html"
+                                    href=""
                                 >
                                     <i class="bi bi-person"></i>
                                     <span>My Profile</span>
@@ -322,7 +305,7 @@
                             <li>
                                 <a
                                     class="dropdown-item d-flex align-items-center"
-                                    href="users-profile.html"
+                                    href=""
                                 >
                                     <i class="bi bi-gear"></i>
                                     <span>Account Settings</span>
@@ -335,7 +318,7 @@
                             <li>
                                 <a
                                     class="dropdown-item d-flex align-items-center"
-                                    href="pages-faq.html"
+                                    href=""
                                 >
                                     <i class="bi bi-question-circle"></i>
                                     <span>Need Help?</span>
@@ -368,7 +351,7 @@
         <aside id="sidebar" class="sidebar">
             <ul class="sidebar-nav" id="sidebar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">
+                    <a class="nav-link" href="/dashboard">
                         <i class="bi bi-grid"></i>
                         <span>Dashboard</span>
                     </a>
@@ -392,81 +375,19 @@
                         data-bs-parent="#sidebar-nav"
                     >
                         <li>
-                            <a href="components-alerts.html">
-                                <i class="bi bi-circle"></i><span>Alerts</span>
+                            <a href="">
+                                <i class="bi bi-circle"></i><span>Kitties</span>
                             </a>
                         </li>
                         <li>
-                            <a href="components-accordion.html">
+                            <a href="">
+                                <i class="bi bi-circle"></i><span>Savings</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
                                 <i class="bi bi-circle"></i
-                                ><span>Accordion</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="components-badges.html">
-                                <i class="bi bi-circle"></i><span>Badges</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="components-breadcrumbs.html">
-                                <i class="bi bi-circle"></i
-                                ><span>Breadcrumbs</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="components-buttons.html">
-                                <i class="bi bi-circle"></i><span>Buttons</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="components-cards.html">
-                                <i class="bi bi-circle"></i><span>Cards</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="components-carousel.html">
-                                <i class="bi bi-circle"></i
-                                ><span>Carousel</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="components-list-group.html">
-                                <i class="bi bi-circle"></i
-                                ><span>List group</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="components-modal.html">
-                                <i class="bi bi-circle"></i><span>Modal</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="components-tabs.html">
-                                <i class="bi bi-circle"></i><span>Tabs</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="components-pagination.html">
-                                <i class="bi bi-circle"></i
-                                ><span>Pagination</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="components-progress.html">
-                                <i class="bi bi-circle"></i
-                                ><span>Progress</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="components-spinners.html">
-                                <i class="bi bi-circle"></i
-                                ><span>Spinners</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="components-tooltips.html">
-                                <i class="bi bi-circle"></i
-                                ><span>Tooltips</span>
+                                ><span>Monthly Contributions</span>
                             </a>
                         </li>
                     </ul>
@@ -489,65 +410,32 @@
                         data-bs-parent="#sidebar-nav"
                     >
                         <li>
-                            <a href="forms-elements.html">
+                            <a href="">
                                 <i class="bi bi-circle"></i
-                                ><span>Form Elements</span>
+                                ><span>Member List</span>
                             </a>
                         </li>
                         <li>
-                            <a href="forms-layouts.html">
+                            <a href="">
                                 <i class="bi bi-circle"></i
-                                ><span>Form Layouts</span>
+                                ><span>Member Contributions</span>
                             </a>
                         </li>
                         <li>
-                            <a href="forms-editors.html">
-                                <i class="bi bi-circle"></i
-                                ><span>Form Editors</span>
+                            <a href="forms-editors">
+                                <i class=""></i
+                                ><span>Member Dependants</span>
                             </a>
                         </li>
                         <li>
-                            <a href="forms-validation.html">
+                            <a href="">
                                 <i class="bi bi-circle"></i
-                                ><span>Form Validation</span>
+                                ><span>Member Verification</span>
                             </a>
                         </li>
                     </ul>
                 </li>
                 <!-- End Forms Nav -->
-
-                <li class="nav-item">
-                    <a
-                        class="nav-link collapsed"
-                        data-bs-target="#tables-nav"
-                        data-bs-toggle="collapse"
-                        href="#"
-                    >
-                        <i class="bi bi-layout-text-window-reverse"></i
-                        ><span>Kitties</span
-                        ><i class="bi bi-chevron-down ms-auto"></i>
-                    </a>
-                    <ul
-                        id="tables-nav"
-                        class="nav-content collapse"
-                        data-bs-parent="#sidebar-nav"
-                    >
-                        <li>
-                            <a href="tables-general.html">
-                                <i class="bi bi-circle"></i
-                                ><span>General Tables</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="tables-data.html">
-                                <i class="bi bi-circle"></i
-                                ><span>Data Tables</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <!-- End Tables Nav -->
-
                 <li class="nav-item">
                     <a
                         class="nav-link collapsed"
@@ -564,20 +452,20 @@
                         data-bs-parent="#sidebar-nav"
                     >
                         <li>
-                            <a href="charts-chartjs.html">
-                                <i class="bi bi-circle"></i
-                                ><span>Chart.js</span>
+                            <a href="">
+                                <i class="bi bi-circle"></i><span>Kitties</span>
                             </a>
                         </li>
                         <li>
-                            <a href="charts-apexcharts.html">
+                            <a href="">
                                 <i class="bi bi-circle"></i
-                                ><span>ApexCharts</span>
+                                ><span>Expenditure</span>
                             </a>
                         </li>
                         <li>
-                            <a href="charts-echarts.html">
-                                <i class="bi bi-circle"></i><span>ECharts</span>
+                            <a href="">
+                                <i class="bi bi-circle"></i
+                                ><span>Contributions</span>
                             </a>
                         </li>
                     </ul>
@@ -587,15 +475,15 @@
                 <li class="nav-heading">Pages</li>
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="users-profile.html">
+                    <a class="nav-link collapsed" href="">
                         <i class="bi bi-person"></i>
-                        <span>Profile</span>
+                        <span>Profile</span=
                     </a>
                 </li>
                 <!-- End Profile Page Nav -->
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="pages-faq.html">
+                    <a class="nav-link collapsed" href="">
                         <i class="bi bi-question-circle"></i>
                         <span>F.A.Q</span>
                     </a>
@@ -603,7 +491,7 @@
                 <!-- End F.A.Q Page Nav -->
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="pages-contact.html">
+                    <a class="nav-link collapsed" href="">
                         <i class="bi bi-envelope"></i>
                         <span>Contact</span>
                     </a>
@@ -611,7 +499,7 @@
                 <!-- End Contact Page Nav -->
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="pages-login.html">
+                    <a class="nav-link collapsed" href="">
                         <i class="bi bi-box-arrow-in-right"></i>
                         <span>Logout</span>
                     </a>
@@ -646,14 +534,7 @@
         ></a>
 
         <!-- Vendor JS Files -->
-        <script src="{% static 'vendor/apexcharts/apexcharts.min.js' %}"></script>
         <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-        <script src="{% static 'vendor/chart.js/chart.umd.js' %}"></script>
-        <script src="{% static 'vendor/echarts/echarts.min.js' %}"></script>
-        <script src="{% static 'vendor/quill/quill.js' %}"></script>
-        <script src="{% static 'vendor/simple-datatables/simple-datatables.js' %}"></script>
-        <script src="{% static 'vendor/tinymce/tinymce.min.js' %}"></script>
-        <script src="{% static 'vendor/php-email-form/validate.js' %}"></script>
 
         <!-- Template Main JS File -->
         <script src="{% static 'js/main.js' %}"></script>
