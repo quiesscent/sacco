@@ -7,7 +7,7 @@ class CustomUser(AbstractUser):
     email = models.EmailField(unique=True)
     id_number = models.CharField(max_length=50, unique=True)
     member_no = models.CharField(max_length=100, unique=True)
-
+    profile = models.ImageField(upload_to='profiles/', default='default.jpg')
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username', 'id_number', 'member_no']
 
@@ -39,7 +39,6 @@ class MemberProfile(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     mobile_no = models.IntegerField(default=0)
     residence = models.CharField(default='', max_length=50)
-    profile_picture = models.ImageField(upload_to='profiles/', default='')
 
     class Meta:
         '''Meta definition for MemberProfile.'''

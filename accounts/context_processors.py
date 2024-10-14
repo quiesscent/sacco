@@ -1,11 +1,11 @@
-from .models import MemberProfile
+from .models import CustomUser
 
 def profile_image(request):
-    profile_picture = None
+    profile = None
 
     if request.user.is_authenticated:
-        user_profile = MemberProfile.objects.filter(user=request.user).first()
+        user_profile = CustomUser.objects.filter(email=request.user).first()
         if user_profile:
-            profile_picture = user_profile.profile_picture
+            profile = user_profile.profile
 
-    return {'profile_picture': profile_picture}
+    return {'profile': profile}
