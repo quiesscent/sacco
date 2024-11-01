@@ -127,7 +127,6 @@ def add_dependant(request):
 
 @user_passes_test(admin_check)
 def member_view(request, name):
-
     name = name.replace('-', ' ')
     username = get_object_or_404(CustomUser, username__iexact=name)
     member = CustomUser.objects.filter(username=username)
