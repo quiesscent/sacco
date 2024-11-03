@@ -52,7 +52,7 @@ def login_(request):
             # Invalid login error
             return JsonResponse({'error': 'Invalid credentials'})
             # return render(request, 'login.html', {'error': 'Invalid credentials'})
-
+    return render(request, 'login.html')
 def register_(request):
     if request.method == 'POST':
         username = request.POST['fullname']
@@ -62,10 +62,17 @@ def register_(request):
         password2 = request.POST['password2']
         membership_no = generate_unique_membership_number()
 
+        member = True if CustomUser.objects.filter(username=username).exists() else False
+        if member:
+            message.error(request, "Username Already Taken")
+            return redirect("register")
+
         if password2 != password1:
             # messages.error(request, 'Passwords do not match')
             print('Passwords do not match')
             messages.error(request, 'Passwords do not match')
+            return redirect("register")
+
         else:
             user = CustomUser.objects.create_user(
                             username=username,

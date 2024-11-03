@@ -3,25 +3,21 @@
     <div class="containerLog">
         <div class="form-box">
             <div class="info-text" id="info-text">
-                <h2 id="info-heading">CREATE ACCOUNT!</h2>
-                <p>Sign up to create a new account and get started.</p>
+                <h2 id="info-heading">WELCOME BACK!</h2>
+                <p>Login to access your account and continue.</p>
             </div>
 
             <div class="form-wrapper" id="form-wrapper">
-                <!-- Sign Up Form -->
-                <form class="form login" method="POST"
-                    action="{% url 'register' %}">
+                <!-- Login Form -->
+                <form class="form login" id="login-form" method="POST" action="{% url 'login'  %}">
                     {% csrf_token %}
-                    <h2>Sign Up</h2>
-                    <input type="text" placeholder="Full name" name="fullname" />
-                    <input type="email" placeholder="Email" name="email" />
-                    <input type="number" placeholder="Id No" name="idNo" />
-                    <input type="password" placeholder="Password" name="password1" />
-                    <input type="password" placeholder="Confirm Password" name="password2" /><br />
-                    <button type="submit">Sign Up</button>
+                    <h2>Login</h2>
+                    <input type="text" placeholder="Email / IdNo" name="username" />
+                    <input type="password" placeholder="Password" name="password" /><br />
+                    <button type="submit">Login</button>
                     <p>
-                        Already have an account?
-                        <a href="{% url 'login' %}">Login</a>
+                        Don't have an account?
+                        <a href="{% url 'register' %}">Sign Up</a>
                     </p>
                 </form>
             </div>
@@ -172,5 +168,4 @@
         }
     }
 </style>
-
 {% endblock content %}
