@@ -1,2 +1,20 @@
 {% extends 'acc/base.html' %} {% load static %} {% load custom_filters %}
-{%block content%} {% endblock content %}
+{%block content%}
+
+{% if request.user.is_superuser %}
+<div>
+super user
+
+
+</div>
+{% else %}
+<div>
+
+
+normal user 
+</div>
+{% endif %}
+
+
+
+{% endblock content %}

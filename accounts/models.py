@@ -5,6 +5,7 @@ from django.contrib.auth.models import AbstractUser
 # Create your models here.
 class CustomUser(AbstractUser):
     email = models.EmailField(unique=True)
+    username = models.CharField(max_length=150, unique=True)
     id_number = models.CharField(max_length=50, unique=True)
     member_no = models.CharField(max_length=100, unique=True)
     profile = models.ImageField(upload_to='profiles/', default='default.jpg')
@@ -22,7 +23,7 @@ class MemberDependent(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     name = models.CharField(default='', max_length=100)
     relationship = models.CharField(default='', max_length=100)
-    proof = models.ImageField(upload_to='dependents/', default='')
+    proof = models.FileField(upload_to='dependents/', default='')
     verified = models.BooleanField(default=False)
 
     class Meta:

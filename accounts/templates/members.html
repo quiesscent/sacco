@@ -1,0 +1,43 @@
+{% extends 'acc/base.html' %}
+
+{% block content %}
+
+<h4>Member List</h4>
+
+<table class="table table-striped table-hover table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">Member No.</th>
+            <th scope="col">Full Name</th>
+            <th scope="col">Email </th>
+            <th scope="col">Position</th>
+            <th scope="col">Status</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        {% for member in members %}
+
+        <tr onclick="window.location.href='{% url 'member' member.username %}';" style="cursor: pointer;">
+            <a href="{% url 'dashboard' %}" class="text-decoration-none"></a>
+            <th scope="row">{{ member.member_no }}</th>
+            <td>{{ member.first_name }} &nbsp; {{ member.last_name }}</td>
+            <td>{{ member.email }}</td>
+            {% if member.is_staff or member.is_superuser %}
+            <td>Official</td>
+            {% else %}
+            <td>Member</td>
+            {% endif %}
+            {% if member.is_active %}
+            <td>Active</td>
+            {% else %}
+            <td>Member</td>
+            {% endif %}
+            </a>
+        </tr>
+
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

@@ -428,7 +428,7 @@
                     >
                         {% if request.user.is_superuser %}
                         <li>
-                            <a href="">
+                            <a href="{% url 'members' %}">
                                 <i class="bi bi-circle"></i
                                 ><span>Members List</span>
                             </a>
@@ -439,7 +439,8 @@
                                 ><span>Member Verification</span>
                             </a>
                         </li>
-                        {% endif %}
+
+                        {% else %}
                         <li>
                             <a href="">
                                 <i class="bi bi-circle"></i
@@ -458,6 +459,8 @@
                                 ><span>Member Next of Kin</span>
                             </a>
                         </li>
+                        {% endif %}
+                        
                     </ul>
                 </li>
                 <!-- End Forms Nav -->
