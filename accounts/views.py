@@ -1,4 +1,4 @@
-from django.http.response import JsonResponse
+from django.http.response import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
@@ -37,7 +37,7 @@ def index(request):
             'contributions': contributions,
         }
 
-    return render(request, 'dashboard.html', context)
+    return HttpResponse('Helllo')
 
 def login_(request):
     if request.method == 'POST':
@@ -52,7 +52,8 @@ def login_(request):
             # Invalid login error
             return JsonResponse({'error': 'Invalid credentials'})
             # return render(request, 'login.html', {'error': 'Invalid credentials'})
-    return render(request, 'login.html')
+    return HttpResponse('Helllo')
+
 def register_(request):
     if request.method == 'POST':
         username = request.POST['fullname']
@@ -85,7 +86,7 @@ def register_(request):
             messages.success(request, 'Member Registration Success !! Login for Member Activation')
             return redirect('register')
 
-    return render(request, 'register.html')
+    return HttpResponse('Helllo')
 
 @user_passes_test(admin_check)
 def admin_crud(request):
@@ -113,7 +114,7 @@ def update_profile(request):
                 'form': form,
                 'dependantform': dependant_form
         }
-    return render(request, 'update.html', context)
+    return HttpResponse('Helllo')
 
 
 def add_dependant(request):
@@ -152,14 +153,14 @@ def member_view(request, name):
         'contributions': contributions
     }
 
-    return render(request, 'member_details.html', context)
+    return HttpResponse('Helllo')
 
 def members(request):
     members = CustomUser.objects.all().order_by('-is_superuser', '-is_staff', 'username')
     context = {
         'members': members
     }
-    return render(request, 'members.html', context)
+    return HttpResponse('Helllo')
 
 
 def logout_(request):
